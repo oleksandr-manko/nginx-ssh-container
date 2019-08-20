@@ -4,7 +4,7 @@ This docker file creates preconfigured ssh server with a user that is in sudoers
 # Build image process
 ### build the Docker file and create an image
 ```console
-$ docker build -t nginx-ssh https://github.com/oleksandr-manko/nginx-ssh-docker-file
+$ docker build -t nginx-ssh https://github.com/oleksandr-manko/nginx-ssh-docker-file.git
 ```
 
 ### run the image
