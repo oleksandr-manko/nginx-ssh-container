@@ -19,7 +19,7 @@ $ docker exec -ti nginx-ssh-container /bin/bash
 # Keys passing process
 ### insert specific pub key to the container on the remoute machine via ssh
 ```console
-sudo ssh-copy-id -p 23 -i ~/.ssh/id_rsa ec2-fake-user@localhost
+sudo ssh-copy-id -p 23 -i ~/.ssh/id_rsa ec2-fake-user@parent-machine-ip
 ```
 
 # Connectivity
