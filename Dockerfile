@@ -1,7 +1,7 @@
 FROM nginx:stable
 
-# install SSHd
-RUN apt-get update && apt-get install -y openssh-server
+# install software
+RUN apt-get update && apt-get install -y openssh-server vim sudo curl	
 
 # create group and user
 ARG username=ec2-fake-user
@@ -14,12 +14,18 @@ RUN echo $username:$userpass | chpasswd
 
 # create ssh dirs
 RUN mkdir /home/$username/.ssh
-RUN mkdir /home/$username/.ssh/authorized_keys
+RUN echo '' > /home/$username/.ssh/authorized_keys
 
 # add your key here
 # COPY id_rsa.pub /home/$username/.ssh/authorized_keys
 RUN chown $username:$usergroup /home/$username/.ssh/authorized_keys
 RUN chmod 600 /home/$username/.ssh/authorized_keys
 
+# attache a user to the sudo group
+RUN usermod -aG sudo $username
+
+# remove pass from sudo
+RUN echo '# Sudo execution without a password' >> /etc/sudoers
+RUN echo $username 'ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 CMD service ssh start && nginx -g 'daemon off;'
 
