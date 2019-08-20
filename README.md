@@ -13,6 +13,7 @@ $ docker run -d -p 23:22 -p 8080:80 --name nginx-ssh-container nginx-ssh
 ```
 
 ### connect to the container from the parent machine
+The password is `EC2FakeUSer`
 ```console
 $ docker exec -ti nginx-ssh-container /bin/bash
 ```
