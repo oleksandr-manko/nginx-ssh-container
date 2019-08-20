@@ -1,6 +1,6 @@
 sut:
   build: .
   volumes: 
-    - ./run_tests.sh:/usr/bin/run_tests.sh
-  command: run_tests.sh
+    - ./run_tests.sh:/tmp/run_tests.sh
+  command: /tmp/run_tests.sh
 
