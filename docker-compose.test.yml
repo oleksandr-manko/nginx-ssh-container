@@ -1,8 +1,8 @@
 version: '3.6'
 services:
   sut:
-    context: .
-  volumes: 
-    - ./run_tests.sh:/opt/run_tests.sh
-  command: sh opt/run_tests.sh
+    build: .
+    volumes: 
+      - ./run_tests.sh:/opt/run_tests.sh
+    command: sh opt/run_tests.sh
 
