@@ -2,9 +2,7 @@ version: '3.6'
 services:
   sut:
     context: .
-    args:
-      - ORIGINAL_CMD=/bin/sh
-    volumes: 
-      - ./run_tests.sh:/opt/run_tests.sh
-    command: /opt/run_tests.sh
+  volumes: 
+    - ./run_tests.sh:/opt/run_tests.sh
+  command: sh opt/run_tests.sh
 
