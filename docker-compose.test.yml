@@ -20,7 +20,7 @@ services:
         ipv4_address: 10.1.0.5
 
 networks:
-  app_net:
+  test_net:
     driver: bridge
     enable_ipv6: true
     ipam:
