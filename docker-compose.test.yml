@@ -1,8 +1,28 @@
 version: '3.6'
+
 services:
   sut:
-    build: .
-    volumes: 
-      - ./run_tests.sh:/opt/run_tests.sh
+    build: test/.
+    volumes:
+      - ./test/run_tests.sh:/opt/run_tests.sh
     command: sh opt/run_tests.sh
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.6
 
+  target:   
+    build: .
+      ports:
+        - "22:22"
+        - "80:80"
+      networks:
+        vpcbr:
+          ipv4_address: 10.5.0.5
+
+networks:
+  vpcbr:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.5.0.0/16
+       - gateway: 10.5.0.1
