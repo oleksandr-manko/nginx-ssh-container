@@ -1,4 +1,4 @@
-version: '3.6'
+version: '2.1'
 
 services:
   sut:
@@ -7,22 +7,23 @@ services:
       - ./test/run_tests.sh:/opt/run_tests.sh
     command: sh opt/run_tests.sh
     networks:
-      vpcbr:
-        ipv4_address: 10.5.0.6
+      test_net:
+        ipv4_address: 10.1.0.6
 
   target:   
     build: .
     ports:
-      - "22:22"
-      - "80:80"
-    networks:
-      vpcbr:
-        ipv4_address: 10.5.0.5
+      - 22:22
+      - 80:80
+   networks:
+      test_net:
+        ipv4_address: 10.1.0.5
 
 networks:
-  vpcbr:
+  app_net:
     driver: bridge
+    enable_ipv6: true
     ipam:
+      driver: default
       config:
-        - subnet: 10.5.0.0/16
-        - gateway: 10.5.0.1
+        - subnet: 10.1.0.0/24
