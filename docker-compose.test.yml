@@ -12,12 +12,12 @@ services:
 
   target:   
     build: .
-      ports:
-        - "22:22"
-        - "80:80"
-      networks:
-        vpcbr:
-          ipv4_address: 10.5.0.5
+    ports:
+      - "22:22"
+      - "80:80"
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.5
 
 networks:
   vpcbr:
