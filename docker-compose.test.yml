@@ -22,7 +22,6 @@ services:
 networks:
   test_net:
     driver: bridge
-    enable_ipv6: true
     ipam:
       driver: default
       config:
